@@ -45,5 +45,5 @@ public class DottosView extends Composite<Component> {
         return mainLayout;
     }
 
-    private transient DottosService dottoService;
+    private final transient DottosService dottoService;
 }
