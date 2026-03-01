@@ -1,1 +1,31 @@
-/* Add your styles here */
+.dottos-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    background-color: lightcyan;
+}
+
+.dotto-details {
+    margin: 1.0rem;
+    padding: 0.2rem 1.2rem;
+    border-radius: 0.3rem;
+    width: 20rem;
+    background-color: white;
+}
+
+.create-dotto {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    border: 1px solid red;
+}
+
+.create-dotto > * {
+    margin-right: 1rem;
+}
+
+.create-dotto:last-child {
+    margin-right: 0;
+}
+

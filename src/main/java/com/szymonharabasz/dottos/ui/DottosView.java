@@ -3,7 +3,6 @@ package com.szymonharabasz.dottos.ui;
 import com.szymonharabasz.dottos.DottosService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -24,24 +23,26 @@ public class DottosView extends Composite<Component> {
     protected Component initContent() {
         var mainLayout = new VerticalLayout();
         var header = new H1("Dottos");
+        var createDotto = new CreateDotto();
         var dottosLayout = new FlexLayout();
         dottosLayout.setSizeFull();
-        dottosLayout.setFlexDirection(FlexLayout.FlexDirection.ROW);
+        dottosLayout.setClassName("dottos-layout");
         var dottos = dottoService.getDottos();
         for (var dotto : dottos) {
+            var detailsHeader = new H3(dotto.title());
+            detailsHeader.getStyle().set("text-wrap", "wrap");
             var details = new Details(
-                    new H3(dotto.title()),
+                    detailsHeader,
                     new VerticalLayout(
                             new Div(dotto.description()),
                             new Div(dotto.created().toString()),
-                            new Div(Integer.toString(dotto.rating()))
+                            new Div(Integer.toString(dotto.score()))
                     )
             );
-            details.getStyle().setPadding("2rem");
-            details.setWidth(20, Unit.REM);
+            details.setClassName("dotto-details");
             dottosLayout.add(details);
         }
-        mainLayout.add(header, dottosLayout);
+        mainLayout.add(header, createDotto, dottosLayout);
         return mainLayout;
     }
 
