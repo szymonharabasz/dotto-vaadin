@@ -16,8 +16,6 @@ html {
     --lumo-error-color:  hsl(337, 93%, 76%);
     --lumo-error-color-50pct:  hsl(337, 48%, 76%);
     --lumo-error-color-10pct:  hsl(337, 9%, 76%);
-
-
 }
 
 .dottos-layout {
@@ -26,10 +24,11 @@ html {
     justify-content: start;
     flex-wrap: wrap;
     background-color: var(--lumo-success-color);
+    padding: 0.25rem;
 }
 
 .dotto-details {
-    margin: 1.0rem;
+    margin: 0.5rem;
     padding: 0.2rem 1.2rem;
     border-radius: 0.3rem;
     width: 20rem;
@@ -40,15 +39,26 @@ html {
 .create-dotto {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
-    border: 1px solid red;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
-.create-dotto > * {
+.create-dotto-text-part {
+    flex-direction: column;
+    width: 35%;
+}
+
+.create-dotto-control-part {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.create-dotto > *, .create-dotto-control-part > * {
     margin-right: 1rem;
 }
 
-.create-dotto:last-child {
+.create-dotto:last-child, .create-dotto-control-part:last-child {
     margin-right: 0;
 }
 

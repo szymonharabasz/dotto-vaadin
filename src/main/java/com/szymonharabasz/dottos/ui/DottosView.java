@@ -24,6 +24,7 @@ public class DottosView extends Composite<Component> {
         var mainLayout = new VerticalLayout();
         var header = new H1("Dottos");
         var createDotto = new CreateDotto();
+        createDotto.setWidthFull();
         var dottosLayout = new FlexLayout();
         dottosLayout.setSizeFull();
         dottosLayout.setClassName("dottos-layout");
