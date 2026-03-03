@@ -1,9 +1,31 @@
+html {
+    --lumo-primary-text-color: hsl(238, 100%, 38%);
+    --lumo-primary-color: hsl(238, 85%, 77%);
+    --lumo-primary-color-50pct: hsl(238, 47%, 77%);
+    --lumo-primary-color-10pct: hsl(238, 9%, 77%);
+    --lumo-utility-border-color: hsl(238, 90%, 60%);
+    --lumo-success-text-colorcolor: hsl(222, 69%, 42%);
+    --lumo-success-color: hsl(222, 69%, 83%);
+    --lumo-success-color-50pct: hsl(222, 35%, 95%);
+    --lumo-success-color-10pct: hsl(222, 7%, 98%);
+    --lumo-warning-text-color: hsl(56, 91%, 20%);
+    --lumo-warning-color: hsl(56, 91%, 73%);
+    --lumo-warning-color-50pct: hsl(56, 46%, 80%);
+    --lumo-warning-color-10pct: hsl(56, 9%, 95%);
+    --lumo-error-text-color: hsl(337, 100%, 38%);
+    --lumo-error-color:  hsl(337, 93%, 76%);
+    --lumo-error-color-50pct:  hsl(337, 48%, 76%);
+    --lumo-error-color-10pct:  hsl(337, 9%, 76%);
+
+
+}
+
 .dottos-layout {
     display: flex;
     flex-direction: row;
     justify-content: start;
     flex-wrap: wrap;
-    background-color: lightcyan;
+    background-color: var(--lumo-success-color);
 }
 
 .dotto-details {
@@ -11,7 +33,8 @@
     padding: 0.2rem 1.2rem;
     border-radius: 0.3rem;
     width: 20rem;
-    background-color: white;
+    height: fit-content;
+    background-color: var(--lumo-warning-color-10pct);
 }
 
 .create-dotto {
