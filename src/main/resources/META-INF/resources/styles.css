@@ -62,3 +62,11 @@ html {
     margin-right: 0;
 }
 
+vaadin-details h3{
+    text-wrap: wrap;
+}
+
+vaadin-details vaadin-icon {
+    margin-right: 0.6rem;
+}
+

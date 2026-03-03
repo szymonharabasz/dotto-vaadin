@@ -1,14 +1,20 @@
 package com.szymonharabasz.dottos.ui;
 
+import com.szymonharabasz.dottos.DottoInput;
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 
 public class CreateDotto extends FlexLayout {
-    public CreateDotto() {
+    private final transient DottoInput dottoInput = new DottoInput();
+
+    public CreateDotto(ComponentEventListener<ClickEvent<Button>> buttonClickListener) {
         setClassName("create-dotto");
         var textPart = new FlexLayout();
         textPart.setClassName("create-dotto-text-part");
@@ -32,8 +38,19 @@ public class CreateDotto extends FlexLayout {
         score.setPlaceholder("0 to 10");
         var button = new Button("Add");
         button.addThemeVariants(ButtonVariant.AURA_PRIMARY);
+        button.addClickListener(buttonClickListener);
         controlPart.add(score, button);
 
         add(textPart, controlPart);
+
+        Binder<DottoInput> bindder= new Binder<>();
+        bindder.bind(title, DottoInput::getTitle, DottoInput::setTitle);
+        bindder.bind(description, DottoInput::getDescription, DottoInput::setDescription);
+        bindder.bind(score, DottoInput::getRating, DottoInput::setRating);
+        bindder.setBean(dottoInput);
+    }
+
+    public DottoInput getDottoInput() {
+        return dottoInput;
     }
 }
