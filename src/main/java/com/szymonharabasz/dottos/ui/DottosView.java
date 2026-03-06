@@ -17,11 +17,13 @@ import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.RolesAllowed;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 @Route("dottos")
+@RolesAllowed("user")
 @Menu(order = 1, icon = "vaadin:check-square-o", title = "Dottos")
 public class DottosView extends Composite<Component> {
     public DottosView(DottosService dottosService) {
