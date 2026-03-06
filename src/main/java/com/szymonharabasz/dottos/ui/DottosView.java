@@ -18,12 +18,14 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.RolesAllowed;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 @Route("dottos")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 @Menu(order = 1, icon = "vaadin:check-square-o", title = "Dottos")
 public class DottosView extends Composite<Component> {
     public DottosView(DottosService dottosService) {
@@ -40,8 +42,17 @@ public class DottosView extends Composite<Component> {
 
     @Override
     protected Component initContent() {
+        var strFullName = "";
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            var user = (DefaultOidcUser) authentication.getPrincipal();
+            if (user != null) {
+                strFullName = " of " + user.getFullName();
+            }
+        }
+
         var mainLayout = new VerticalLayout();
-        var header = new H1("Dottos");
+        var header = new H1("Dottos" + strFullName);
         dottosLayout = new FlexLayout();
         dottosLayout.setSizeFull();
         dottosLayout.setClassName("dottos-layout");
@@ -51,6 +62,7 @@ public class DottosView extends Composite<Component> {
     }
 
     private void addDottosDetails() {
+
         dottosLayout.removeAll();
         var dottos = dottoService.getDottos();
         for (var dotto : dottos) {
